@@ -19,7 +19,7 @@ export default function ListRepositories({ username }: ListRepositoryProps) {
   };
 
   return (
-    <Box maxWidth={"500px"} width={"70vw"} minWidth={"300px"}>
+    <Box maxWidth={"500px"} width={"70vw"} minWidth={"320px"}>
       <Accordion
         title={username}
         onClick={() => handleOnClickAccordion(username)}

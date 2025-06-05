@@ -43,7 +43,7 @@ export default function ListRepositories({ username }: ListRepositoryProps) {
                   </Typography>
                   <Box display={"flex"} alignItems={"center"} gap={1}>
                     <Typography>{itemRepository.stargazers_count}</Typography>
-                    <StarIcon />
+                    <StarIcon style={{ color: "orange" }} />
                   </Box>
                 </Box>
                 <Box mt={2}>{itemRepository.description}</Box>

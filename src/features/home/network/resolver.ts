@@ -13,10 +13,4 @@ export const useGetUserRepository = () => {
   return useMutation({
     mutationFn: (username: string) => getUserRepository({ username }),
   });
-
-  // return useQuery({
-  //   enabled: false,
-  //   queryKey: ["repository", username],
-  //   queryFn: () => getUserRepository({ username }),
-  // });
 };

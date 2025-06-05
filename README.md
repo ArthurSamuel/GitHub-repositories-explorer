@@ -1,54 +1,60 @@
-# React + TypeScript + Vite
+# About
+Project is based on **React + Typescript + Vite**, and have features to search Github username and show their public repositories. 
+[Click](https://github-repositories-explorer-test2025.netlify.app/) here to start using the app.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Features
+- Allows users to search for a GitHub username by typing in the search box and pressing the Search button or the Enter key.
+- Displays public repositories when a result card is clicked from the search results.
+- Shows repository details including name, star count, and description.
+- Displays a message "GitHub username not found" if the searched user doesn't exist.
+- Displays a message "User doesn't have any public repository" if the selected user has none.
+- Disables the search action while a search is in progress.
+- Prevents searching if the search box is empty.
 
-Currently, two official plugins are available:
+# Run Locally
+- ``npm run install``
+- ``npm run dev``
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+# Unit Test
+The test suite includes both global/shared components and the Home page feature. Below are the tested components along with their test cases:
+File Name | Test Case 
+--- | --- |
+Accordion.test.tsx | <ul><li>Render title</li><li>Children should not render intially</li><li>Render children when acordion open</li><li>Hide children when acordion closed</li></ul>
+Card.test.tsx | <ul><li>Children should be render</li></ul>
+SearchBar.test.tsx | <ul><li>Search button should be disable initially</li><li>User can type into search box and button should click able</li></ul>
+Home.test.tsx | <ul> <li>Should show 5 github users</li> <li>Should show user's repository when accordion clicked</li> <li>Should show text message "User doesn't have any public repository" when user doesn't have public repository </li> <li>Should show text message "Github username not found" when github user not found</li> </ul>
 
-## Expanding the ESLint configuration
+use ``npm run test`` to run the test locally.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+# Library
+- [Material UI](https://mui.com/) Used for layout and common UI components.
+- [Styled Component](https://styled-components.com/) For creating custom components with CSS-in-JS styling.
+- [Axios](https://axios-http.com/) For making API requests.
+- [React Query](https://tanstack.com/query/latest) Handles API state and caching.
+- [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/) For testing React components.
+- [React Router](https://reactrouter.com/) Manages navigation and routing.
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+# Folder Structure
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+    
+    ├── public               # Static assets that are publicly accessible
+    ├── src                  # Main source code directory for the application
+       ├── assets            # Stores local assets like images, icons, etc.
+       ├── components        # Shared/global components used across the app
+       ├── core              # Core utilities or configs required by most components
+       ├── features          # Feature modules representing different pages
+           ├── home            # Contains all features related to the home page
+                ├── __components     # Components specific to the home page
+                ├── network          # Handles API integration for the home page
+                    ├── service.ts           # Defines actual API calls
+                    ├── resolver.ts          # React Query resolvers that wrap and manage service calls
+                    ├── response.type.d.ts   # Defines the types for API responses
+                ├── page             # Home-related page components
+                ├── test             # Test scripts for the home module
+                ├── index.ts         # Entry point and exports for the home module
+       ├── layout            # Layout components that act as wrappers for the app
+       ├── router            # Route definitions and navigation configuration
+    
+
